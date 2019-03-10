@@ -1,0 +1,377 @@
+{% extends 'Platform/base-store.html' %}
+{% load static %}
+
+{% block store_collection_page %}import{% endblock store_collection_page %}
+
+{% block body_content %}
+{% load humanize %}
+{% load product_arithmatic %}
+<div class="main-content shop-page productdetails-page">
+	<div class="container">
+		<div class="breadcrumbs"></div>
+		<div class="productdetails-content">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+					<div class="product-details-view">
+						<div class="owl-carousel has-thumbs has-nav" data-autoplay="false" data-nav="true" data-dots="true" data-loop="true" data-slidespeed="100" data-margin="0"  data-responsive = '{"0":{"items":1}, "640":{"items":1}, "768":{"items":1}, "1024":{"items":1}, "1200":{"items":1}}'>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+							<div class="details-item">
+								<div class="main-img">
+									<img src="{% static 'Platform/images/details1.jpg' %}" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+					<div class="details-info">
+						<div class="product-info">
+							<a class="product-name" href="javascript:void(0);">{{ product.product_name }}</a>
+							<div class="price">
+								₩ {{ product.price|intcomma }}
+							</div>
+							
+							<div class="description">
+								{{ product.description|linebreaks }}<br>
+								배송비: {% if product.shipping_cost == '0' %}무료{% else %}₩ {{ product.shipping_cost|intcomma }}{% endif %}<br>
+								포인트: {{ product.price|calculate_points|intcomma }} BL (1.5% 적립)
+							</div>
+							
+							<div class="box-quantity">
+								<div class="row product-type-selection">
+									<div class="col-sm-12">
+										<select id="colorSelect" class="form-control product-type-select" onchange="getSize();">
+											<option value="0" selected >&nbsp;컬러를 선택해주세요.</option>
+											{% for color in colors %}
+											<option value="{{ color }}">&nbsp;{{ color }}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+
+								<div class="row product-type-selection">
+									<div class="col-sm-12">
+										<select id="sizeSelect" class="form-control product-type-select">
+											<option value="0">&nbsp;사이즈를 선택해주세요.</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="row product-cta">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<a href="#" class="add-to-bag" onclick="makePurchase(); return false;">바로 구매하기</a>
+								</div>
+							</div>
+							<div class="row product-cta">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<a href="#" class="add-to-bag-2" onclick="addToCart(); return false;">쇼핑백에 담기</a>
+								</div>
+								<!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<a href="{% url 'home-try-on-cart' %}" class="add-to-bag-2">피팅 체험하기</a>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="kt-tab-fadeeffect nav-tab-style4">
+				<ul class="nav list-nav">
+					<li class="active"><a data-animated="rotateIn" data-toggle="pill" href="#tab1">Description</a></li>
+					<li><a data-animated="zoomInUp" data-toggle="pill" href="#tab2">Additional Information</a></li>
+					<li><a class="reviews" data-animated="rotateInDownLeft" data-toggle="pill" href="#tab3">Reviews <span class="count">(0)</span></a></li>
+				</ul>
+				<div class="tab-content">
+		    		<div id="tab1" class="tab-panel active">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-8">
+			    				<div class="description-content">{{ product.size_guide|linebreaks }}</div>
+			    			</div>
+			    		</div>
+			    		<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-8">
+					    		<table class="additional-info">
+					    			{% if product.model_name != '' %}
+					    			<tr>
+					    				<td>모델 이름:</td>
+					    				<td>{{ product.model_name }}</td>
+					    			</tr>
+					    			{% endif %}
+
+					    			{% if product.model_size != '' %}
+					    			<tr>
+					    				<td>모델 신체 사이즈:</td>
+					    				<td>{{ product.model_size }}</td>
+					    			</tr>
+					    			{% endif %}
+					    			
+					    			{% if model_products_count != 0 %}
+					    			<tr>
+					    				<td>모델 착용 사이즈:</td>
+					    				<td>
+					    					{% for model_product in model_products_cleaned %}
+					    					{{ model_product }}{% if forloop.counter != model_products_count %}, {% endif %}
+					    					{% endfor %}
+					    				</td>
+					    			</tr>
+					    			{% endif %}
+					    		</table>
+					    	</div>
+					    </div>
+		    		</div>
+		    		<div id="tab2" class="tab-panel">
+			    		<table class="additional-info">
+			    			<tr>
+			    				<td>소재:</td>
+			    				<td>{{ product.materials }}</td>
+			    			</tr>
+			    			<tr>
+			    				<td>취급시 주의사항:</td>
+			    				<td>{{ product.notice|linebreaks }}</td>
+			    			</tr>
+			    			<tr>
+			    				<td>제조자:</td>
+			    				<td>{{ product.made_by }}</td>
+			    			</tr>
+			    			<tr>
+			    				<td>제조국:</td>
+			    				<td>{{ product.made_in }}</td>
+			    			</tr>
+			    			<tr>
+			    				<td>제조연월:</td>
+			    				<td>{{ product.made_at }}</td>
+			    			</tr>
+			    			<tr>
+			    				<td>품질보증기준:</td>
+			    				<td>전자상거래 소비자보호법에 규정되어 있는 소비자 청약철회 가능범위를 준수합니다.</td>
+			    			</tr>
+			    			<tr>
+			    				<td>A/S 연락처:</td>
+			    				<td>{{ product.inquiry_for_AS }}</td>
+			    			</tr>
+			    		</table>
+		    		</div>
+		    		<div id="tab3" class="tab-panel">
+		    			<div class="review-content">
+		    				<h3 class="title">
+		    					<i>“{{ product.product_name }}”</i> 구매하고 첫 후기를 남겨주세요.
+		    				</h3>
+		    				<!-- <div class="rate">
+		    					<span class="text">Your Rating:</span>
+		    					<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+		    					<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+		    					<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+		    					<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+		    					<a href="#" class="no-rate"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+		    				</div>
+		    				<div class="row">
+		    					<div class="col-xs-12 col-sm-12 col-md-8">
+		    						<h4 class="subtitle">Your Review</h4>
+		    						<textarea rows="5"  class="input-info input-note" ></textarea>
+		    						<div class="row">
+		    							<div class="col-xs-12 col-sm-6">
+		    								<h4 class="subtitle">Name *</h4>
+		    								<input type="text" name="input-info" class="input-info" >
+		    							</div>
+		    							<div class="col-xs-12 col-sm-6">
+		    								<h4 class="subtitle">Email *</h4>
+		    								<input type="text" name="input-info" class="input-info right-input" >
+		    							</div>
+		    						</div>
+		    						
+		    					</div>
+		    				</div>
+		    				<a href="#" class="submit">SUBMIT</a> -->
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="other-product">
+		    	<h4 class="main-title">You maybe also like</h4>
+		    	<div class="owl-carousel products-list" data-autoplay="false" data-nav="false" data-dots="true" data-loop="true" data-slidespeed="100" data-margin="30"  data-responsive = '{"0":{"items":1}, "640":{"items":2}, "768":{"items":3}, "1024":{"items":3}, "1200":{"items":3}}'>
+		    		<div class="product-item layout1">
+						<div class="product-inner">
+							<div class="product-thumb">
+								<a class="thumb-link" href="#">
+									<img src="{% static 'Platform/images/product1.jpg' %}" alt="">
+								</a>
+								<div class="group-button">
+									<a class="add-to-wishlist" href="#"></a>
+								</div>
+							</div>
+							<div class="product-info">
+								<a class="product-name" href="#">Wicker in Clove-Black </a>
+								<div class="price">
+									€72
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-item layout1">
+						<div class="product-inner">
+							<div class="product-thumb">
+								<a class="thumb-link" href="#">
+									<img src="{% static 'Platform/images/product2.jpg' %}"  alt="">
+								</a>
+								<div class="group-button">
+									<a class="add-to-wishlist" href="#"></a>
+								</div>
+							</div>
+							<div class="product-info">
+								<a class="product-name" href="#">Theo Tea Pot </a>
+								<div class="price">
+									€89
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-item layout1">
+						<div class="product-inner">
+							<div class="product-thumb">
+								<a class="thumb-link" href="#">
+									<img src="{% static 'Platform/images/product3.jpg' %}" alt="">
+								</a>
+								<div class="group-button">
+									<a class="add-to-wishlist" href="#"></a>
+								</div>
+							</div>
+							<div class="product-info">
+								<a class="product-name" href="#">24H Dinner Plate </a>
+								<div class="price">
+									€56
+								</div>
+							</div>
+						</div>
+					</div>
+			    </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<form id="directPurchaseForm" method="POST" action="{% url 'direct-purchase-form' %}">{% csrf_token%}
+	<input type="hidden" name="url_extension" value="{{ store.url_extension }}" >
+	<input type="hidden" name="product_id" value="{{ product.product_id }}" >
+	<input id="colorType1" type="hidden" name="color" value="" >
+	<input id="sizeType1" type="hidden" name="size" value="" >
+</form>
+<form id="addToCartForm" method="POST" action="{% url 'add-to-cart-form' %}">{% csrf_token%}
+	<input type="hidden" name="url_extension" value="{{ store.url_extension }}" >
+	<input type="hidden" name="product_id" value="{{ product.product_id }}" >
+	<input id="colorType2" type="hidden" name="color" value="" >
+	<input id="sizeType2" type="hidden" name="size" value="" >
+</form>
+
+{% endblock body_content %}
+
+{% block js_script %}
+<script type="text/javascript">
+var jsonObject = JSON.parse('{{ json_string|escapejs }}');
+var jsonObject2 = JSON.parse('{{ json_string_2|escapejs }}');
+
+function getSize() {
+	var color_select = document.getElementById('colorSelect');
+	var size_select = document.getElementById('sizeSelect');
+	var color_select_value = color_select.options[color_select.selectedIndex].value;
+	if (color_select_value == '0') {
+		var i;
+		for (i = size_select.options.length - 1; i >= 0; i--) {
+			size_select.remove(i);
+		}
+		var option = document.createElement("option");
+		option.text = '\xa0' + '사이즈를 선택해주세요.';
+		option.value = '0';
+		size_select.appendChild(option);
+		size_select.disabled = true;
+	}
+	else {
+		var i;
+		for (i = size_select.options.length - 1; i >= 0; i--) {
+			size_select.remove(i);
+		}
+		
+		var option = document.createElement("option");
+		option.text = '\xa0' + '사이즈를 선택해주세요.';
+		option.value = '0';
+
+		size_select.appendChild(option);
+		var sizes = jsonObject[color_select_value];
+		var opt_index = 1;
+		for (var size in sizes) {
+			var size_option = sizes[size];
+			var option = document.createElement("option");
+			option.text = '\xa0' + size_option;
+			option.value = size_option;
+			size_select.appendChild(option);
+
+			if (jsonObject2[color_select_value][size_option] == 0) {
+				size_select.options[opt_index].disabled = true;
+			}
+			opt_index = opt_index + 1;
+		}
+		size_select.disabled = false;
+	}
+}
+getSize();
+
+function makePurchase() {
+	var color_select = document.getElementById('colorSelect');
+	var size_select = document.getElementById('sizeSelect');
+	var color_select_value = color_select.options[color_select.selectedIndex].value;
+	var size_select_value = size_select.options[size_select.selectedIndex].value;
+	if (color_select_value == '0' || size_select_value == '0') {
+		window.alert('컬러와 사이즈를 선택해주세요.');
+	}
+	else {
+		document.getElementById('colorType1').value = color_select_value;
+		document.getElementById('sizeType1').value = size_select_value;
+		// document.getElementById('directPurchaseForm').submit();		
+	}
+}
+
+function addToCart() {
+	var color_select = document.getElementById('colorSelect');
+	var size_select = document.getElementById('sizeSelect');
+	var color_select_value = color_select.options[color_select.selectedIndex].value;
+	var size_select_value = size_select.options[size_select.selectedIndex].value;
+	if (color_select_value == '0' || size_select_value == '0') {
+		window.alert('컬러와 사이즈를 선택해주세요.');
+	}
+	else {
+		document.getElementById('colorType2').value = color_select_value;
+		document.getElementById('sizeType2').value = size_select_value;
+		// document.getElementById('addToCartForm').submit();
+	}
+}
+
+</script>
+{% endblock js_script %}
