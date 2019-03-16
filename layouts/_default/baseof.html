@@ -89,22 +89,6 @@
                                         <ul class="main-menu left-menu">
                                             <li class="menu-item menu-item-has-children">
                                                 <a href="#">Home</a>
-                                                <a href="#" class="toggle-submenu"></a>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Shop</a>
-                                                <a href="#" class="toggle-submenu"></a>
-                                                <ul class="submenu">
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="category-grid.html">Category Grid</a>
-                                                    </li>
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="category-list.html">Category List</a>
-                                                    </li>
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="productdetails.html">Product Details</a>
-                                                    </li>
-                                                </ul>
                                             </li>
                                         </ul>
                                         <div class="logo">
@@ -141,24 +125,6 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="blog.html">Blog</a>
-                                                <a href="#" class="toggle-submenu"></a>
-                                                <ul class="submenu">
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="blog.html">Blog 1</a>
-                                                    </li>
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="blog2.html">Blog 2</a>
-                                                    </li>
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="blog3.html">Blog 3</a>
-                                                    </li>
-                                                    <li class="menu-item submenu-item">
-                                                        <a href="single-blog.html">Single Blog</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -170,25 +136,15 @@
         </div>
     </header>
     <div class="main-content home4">
-        <div class="slideshow slideshow1">
-            {{block "slideshow"}}
-            {{end}}
-        </div>
         <div class="product-content">
             <div class="container">
-                <div class="kt-tab-fadeeffect nav-tab-style1">
-                    <ul class="nav list-nav">
-                        {{block "nav_content"}}
-                        {{end}}
-                    </ul>
-                    {{block "tab_content}}
-                    {{end}}
-                </div>
+                {{ block "content" .}}
+                {{ end }}
             </div>
         </div>
     </div>
     <footer>
-       {{ block "footer"}}
+       {{ block "footer" .}}
        <!-- Shared code for footer-->
        {{ end }}
     </footer>

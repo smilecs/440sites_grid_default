@@ -1,0 +1,36 @@
+{{ define "content" }}
+
+<div class="list-category-content">
+  <div class="row list auto-clear category-content">
+    {{ range.Pages }}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 product-item layout4">
+      <div class="product-inner">
+        <div class="product-thumb">
+          <a class="thumb-link" href="#">
+            <img src="images/product25.jpg" alt="" />
+          </a>
+          <div class="group-button">
+            <a class="add-to-wishlist" href="#"></a>
+          </div>
+        </div>
+        <div class="all-info">
+          <div class="product-info">
+            <a class="product-name" href="#"> {{ .Params.Product }} </a>
+            <div class="price">
+              {{ .Params.Price }}
+            </div>
+          </div>
+          <div class="description">
+            {{ .Params.Description}}
+          </div>
+          <div class="group-button">
+            <a class="add-to-cart" href="#">add to cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}
