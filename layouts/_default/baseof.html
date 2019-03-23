@@ -142,12 +142,11 @@
                 {{ end }}
             </div>
         </div>
+        {{ include "newsletter.html"}}
     </div>
-    <footer>
-       {{ block "footer" .}}
-       <!-- Shared code for footer-->
-       {{ end }}
-    </footer>
+        <footer>
+            {{ include "footer.html"}}
+        </footer>
     <a class="back-to-top" href="#"></a>
     <script src="/js/jquery-1.12.4.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
