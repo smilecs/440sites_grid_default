@@ -60,12 +60,7 @@
                 <div class="description">
                  {{ .Params.Description }}
                 </div>
-                <ul class="list-color">
-                  <li><a href="#" class="yellow"></a></li>
-                  <li><a href="#" class="green"></a></li>
-                  <li><a href="#" class="gray current"></a></li>
-                  <li><a href="#" class="black"></a></li>
-                </ul>
+                
                 <div class="box-quantity">
                   <span class="text">QTY</span>
                   <span class="quantity">
@@ -76,30 +71,6 @@
                   </span>
                 </div>
                 <a href="#" class="add-to-bag">Add to CART</a>
-                <div class="group-button">
-                  <ul class="list-social">
-                    <li>
-                      <a href="#" class="add-to-wishlist"
-                        ><i class="fa fa-heart" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-twitter" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-linkedin" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-vimeo" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -117,7 +88,7 @@
                 data-animated="rotateInDownLeft"
                 data-toggle="pill"
                 href="#tab3"
-                >Reviews <span class="count">(0)</span></a
+                >Reviews <span class="count">({{ .Params.Review }})</span></a
               >
             </li>
           </ul>
@@ -126,30 +97,30 @@
               <table class="additional-info">
                 <tr>
                   <td>Weight:</td>
-                  <td>1.05 kg</td>
+                  <td>{{ .Params.Info.Weight }}</td>
                 </tr>
                 <tr>
                   <td>Dimensions:</td>
-                  <td>100 x 37 x 100 cm</td>
+                  <td>{{ .Params.Info.Dimensions }}</td>
                 </tr>
                 <tr>
                   <td>Materials:</td>
-                  <td>80% cotton, 20% linen</td>
+                  <td>{{ .Params.Info.Materials }}</td>
                 </tr>
                 <tr>
                   <td>Other Info:</td>
-                  <td>American heirloom jean shorts pug seitan letterpress.</td>
+                  <td>{{ .Params.Info.Description }}</td>
                 </tr>
                 <tr>
                   <td>Size:</td>
-                  <td>One Size, XL, L, M, S</td>
+                  <td>{{ .Params.Info.Sizes }}</td>
                 </tr>
               </table>
             </div>
             <div id="tab3" class="tab-panel">
               <div class="review-content">
                 <h3 class="title">
-                  Be the first to review <i>“Theo Tea Pot”</i> (Your email
+                  Review <i>{{ .Params.Product }}</i> (Your email
                   address will not be published. Required fields are marked)
                 </h3>
                 <div class="rate">
