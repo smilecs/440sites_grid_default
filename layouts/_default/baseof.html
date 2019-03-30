@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Quinto Home 4 - Template</title>
+    <title>{{ .Title }}</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@
                   <div class="note">
                     <span class="topbar-icon"
                       ><i class="fa fa-rocket" aria-hidden="true"></i></span
-                    ><span class="text">Free shipping worldwide !</span>
+                    ><span class="text">{{ .Params.Slogan }}</span>
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                       >
                     </li>
                     <li class="my-account">
-                      <a href="login.html">
+                      <a href="/login">
                         <span class="topbar-icon"
                           ><i class="fa fa-user" aria-hidden="true"></i></span
                         >My Acount</a
@@ -108,7 +108,7 @@
                             class="fa fa-shopping-basket"
                             aria-hidden="true"
                           ></i></span
-                        >Cart <span class="count">(2)</span></a
+                        >Cart <span class="count">()</span></a
                       >
                     </li>
                   </ul>
