@@ -7,7 +7,7 @@
           <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
             <div class="product-details-view">
               <div class="box-product-view">
-                {{ if not  .Params.images nil  }}
+                {{ if not (eq  .Params.images nil)  }}
                 <img src="{{ (index .Params.images 0).url }}" alt="" />
                 {{ end }}
               </div>
