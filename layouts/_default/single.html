@@ -7,7 +7,9 @@
           <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
             <div class="product-details-view">
               <div class="box-product-view">
-                <img src="{{ index .Params.images 0 | .url }}" alt="" />
+                {{ if gt (len .Params.images) 0  }}
+                <img src="{{ (index .Params.images 0).url }}" alt="" />
+                {{ end }}
               </div>
               <div class="product-details-nav">
                 <div
