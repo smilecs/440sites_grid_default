@@ -9,7 +9,9 @@
             <div class="product-inner">
               <div class="product-thumb">
                 <a class="thumb-link" href="#">
-                  <img src="/images/product25.jpg" alt="" />
+                  {{ if not (eq  .Params.images nil)  }}
+                  <img src="{{ (index .Params.images 0).url }}" alt="" />
+                  {{ end }}
                 </a>
                 <div class="group-button">
                   <a class="add-to-wishlist" href="#"></a>
