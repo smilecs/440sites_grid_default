@@ -1,44 +1,82 @@
 {{ define "content" }}
 <div class="main-content home4">
-  <div class="product-content">
-    <div class="container">
-      <div class="list-category-content">
-        <div class="row list auto-clear category-content">
-          {{ range.Pages }}
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 product-item layout4">
-            <div class="product-inner">
-              <div class="product-thumb">
-                <a class="thumb-link" href="#">
-                  {{ if not (eq  .Params.images nil)  }}
-                  <img src="{{ (index .Params.images 0).url }}" alt="" />
-                  {{ end }}
-                </a>
-                <div class="group-button">
-                  <a class="add-to-wishlist" href="#"></a>
+    <div class="product-content">
+        <div class="container">
+            <div class="kt-tab-fadeeffect nav-tab-style1">
+                <ul class="nav list-nav">
+                    <li class="active"><a data-animated="slideInRight" data-toggle="pill" href="#all">All</a></li>
+                    {{ range .Sections }}
+                    <li class=""><a data-animated="slideInRight" data-toggle="pill"
+                            href="#{{ .Section }}">{{ .Section | title }}</a></li>
+                    {{ end }}
+                </ul>
+                <div class="tab-content">
+                    <div id="all" class="tab-panel active">
+                        <div class="qt-products grid row-has-3items">
+                            <div class="row auto-clear">
+                                {{ range .Data.Pages }}
+                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
+                                    <div class="product-inner">
+                                        <div class="product-thumb">
+                                            <a class="thumb-link" href="#">
+                                                {{ if not (eq  .Params.images nil)  }}
+                                                <img src="{{ (index .Params.images 0).url }}"
+                                                    alt="images/product4.jpg" />
+                                                {{ end }}
+                                            </a>
+                                            <div class="group-button">
+                                                <a class="add-to-wishlist" href="#"></a>
+                                            </div>
+                                            <div class="product-info">
+                                                <a class="product-name"
+                                                    href="{{ .RelPermalink }}">{{ .Params.title | title}} </a>
+                                                <div class="price">
+                                                    {{ .Params.price }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ range .Sections }}
+                    <div id="{{ .Section }}" class="tab-panel">
+                        <div class="qt-products grid row-has-3items">
+                            <div class="row auto-clear">
+                                {{ range (where .Site.RegularPages.ByTitle "Section" .Section ) }}
+                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
+                                    <div class="product-inner">
+                                        <div class="product-thumb">
+                                            <a class="thumb-link" href="#">
+                                                {{ if not (eq  .Params.images nil)  }}
+                                                <img src="{{ (index .Params.images 0).url }}"
+                                                    alt="images/product4.jpg" />
+                                                {{ end }}
+                                            </a>
+                                            <div class="group-button">
+                                                <a class="add-to-wishlist" href="#"></a>
+                                            </div>
+                                            <div class="product-info">
+                                                <a class="product-name"
+                                                    href="{{ .RelPermalink }}">{{ .Params.title | title}} </a>
+                                                <div class="price">
+                                                    {{ .Params.price }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
                 </div>
-              </div>
-              <div class="all-info">
-                <div class="product-info">
-                  <a class="product-name" href="{{ .RelPermalink }}">
-                    {{ .Params.title }}
-                  </a>
-                  <div class="price">
-                    {{ .Params.price }}
-                  </div>
-                </div>
-                <div class="description">
-                  {{ .Params.description }}
-                </div>
-                <div class="group-button">
-                  <a class="add-to-cart" href="#">add to cart</a>
-                </div>
-              </div>
             </div>
-          </div>
-          {{ end }}
         </div>
-      </div>
     </div>
-  </div>
 </div>
 {{ end }}
