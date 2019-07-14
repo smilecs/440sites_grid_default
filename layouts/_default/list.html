@@ -5,9 +5,9 @@
             <div class="kt-tab-fadeeffect nav-tab-style1">
                 <ul class="nav list-nav">
                     <li class="active"><a data-animated="slideInRight" data-toggle="pill" href="#all">All</a></li>
-                    {{ range .Sections }}
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li class=""><a data-animated="slideInRight" data-toggle="pill"
-                            href="#{{ .Section }}">{{ .Section | title }}</a></li>
+                            href="#{{$baseurl}}{{"categories/" | relLangURL}}{{$name | urlize}}">{{$name}}</a></li>
                     {{ end }}
                 </ul>
                 <div class="tab-content">
