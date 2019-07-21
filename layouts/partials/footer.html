@@ -16,3 +16,22 @@
         </div>
     </div>
 </div>
+
+<section id="the_body"></section>
+<div class="fixed bottom-0" style="z-index:1000">
+  <button onclick="add()">add</button>
+</div>
+
+<script src="//localhost:8000/dist/sdk.js" type="text/javascript" charset="utf-8" ></script>
+   <script>
+  new window.shop440site({
+    el:document.getElementById("the_body"),
+    apiRoot: "http://localhost:8080"
+  }) 
+
+  function add(){
+    console.log("Add")
+    var event = new CustomEvent('s440-add-to-cart', {detail:{ slug: "january-ss-sunglasses-jhn0m/", shopId:"demo", quantity:2 }});
+    console.log(window.dispatchEvent(event))
+  }
+ </script>
