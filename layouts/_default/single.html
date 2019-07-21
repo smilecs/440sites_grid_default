@@ -8,7 +8,8 @@
             <div class="product-details-view">
               <div class="box-product-view">
                 {{ if not (eq  .Params.images nil)  }}
-                <img src="{{ (index .Params.images 0).url }}" alt="" />
+                <img src="{{ (index .Params.images 0).url }}" 
+                alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
                 {{ end }}
               </div>
               <div class="product-details-nav">
@@ -25,7 +26,8 @@
                   {{ range.Params.images }}
                   <div class="details-item">
                     <div class="main-img">
-                      <img src="{{ .url }}" alt="" />
+                      <img src="https://imgproxy-vc5s5p7q2q-ew.a.run.app/insecure/fill/300/500/sm/1/plain/{{ .url }}" 
+                      alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
                     </div>
                   </div>
                   {{ end }}

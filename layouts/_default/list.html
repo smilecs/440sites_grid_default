@@ -17,10 +17,10 @@
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
                                     <div class="product-inner">
                                         <div class="product-thumb">
-                                            <a class="thumb-link" href="#">
+                                            <a class="thumb-link" href="{{ .RelPermalink }}">
                                                 {{ if not (eq  .Params.images nil)  }}
-                                                <img src="{{ (index .Params.images 0).url }}"
-                                                    alt="images/product4.jpg" />
+                                                <img src="https://imgproxy-vc5s5p7q2q-ew.a.run.app/insecure/fill/300/500/sm/1/plain/{{ (index .Params.images 0).url }}"
+                                                    alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
                                                 {{ end }}
                                             </a>
                                             <div class="group-button">
@@ -49,10 +49,10 @@
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
                                     <div class="product-inner">
                                         <div class="product-thumb">
-                                            <a class="thumb-link" href="#">
+                                            <a class="thumb-link" href="{{ .RelPermalink }}">
                                                 {{ if not (eq  .Params.images nil)  }}
-                                                <img src="{{ (index .Params.images 0).url }}"
-                                                    alt="images/product4.jpg" />
+                                                <img src="https://imgproxy-vc5s5p7q2q-ew.a.run.app/insecure/fill/300/500/sm/1/plain/{{ (index .Params.images 0).url }}"
+                                                    alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
                                                 {{ end }}
                                             </a>
                                             <div class="group-button">

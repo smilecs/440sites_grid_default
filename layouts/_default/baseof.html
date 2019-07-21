@@ -1,85 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ .Title }}</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/animate.min.css" rel="stylesheet" />
-    <link href="/css/chosen.min.css" rel="stylesheet" />
-    <link href="/css/jquery.scrollbar.min.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
-    <link href="/css/customs-css.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <header>
-      <div class="header layout4 header-has-logo">
-        <div class="menu-mobile"></div>
-        <div class="topbar">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-sm-5 left-content">
-                <div class="topbar-content left">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ .Site.Title }}</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+  <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="/css/animate.min.css" rel="stylesheet" />
+  <link href="/css/chosen.min.css" rel="stylesheet" />
+  <link href="/css/jquery.scrollbar.min.css" rel="stylesheet" />
+  <link href="/css/style.css" rel="stylesheet" />
+  <link href="/css/customs-css.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="header layout4 header-has-logo">
+      <div class="menu-mobile"></div>
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-5 left-content">
+              <div class="topbar-content left">
+                <a href="{{ .Site.BaseURL }}">
                   <div class="note">
-                    <span class="topbar-icon"
-                      ><i class="fa fa-rocket" aria-hidden="true"></i></span
-                    ><span class="text">{{ .Site.Title }}</span>
+                    <span class="topbar-icon"><i class="fa fa-rocket" aria-hidden="true"></i></span><span
+                      class="text">{{ .Site.Title }}</span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-xs-12 col-sm-7 right-content">
-                <div class="topbar-content right">
-                  <ul class="top-links menu-topbar">
-                    
-                      <div class="top-inner account-inner top-login-form show">
-                        <div class="title">
-                          
-                        </div>
-                       
-                        
-                      </div>
-                      
-                    </li>
-                    <li class="mini-cart">
-                      <a href="shoppingcart.html"
-                        ><span class="topbar-icon"
-                          ><i
-                            class="fa fa-shopping-basket"
-                            aria-hidden="true"
-                          ></i></span
-                        >Cart <span class="count">()</span></a
-                      >
-                    </li>
-                  </ul>
-                </div>
+            </div>
+            <div class="col-xs-12 col-sm-7 right-content">
+              <div class="topbar-content right">
+                <ul class="top-links menu-topbar">
+
+                  <div class="top-inner account-inner top-login-form show">
+                    <div class="title">
+
+                    </div>
+
+
+                  </div>
+
+                  <li>
+                    <a href="{{ .Site.BaseURL }}"> <span class="topbar-icon">
+                      <i class="fa fa-life-ring"
+                          aria-hidden="true"></i></span>Home</a>
+                  </li>
+
+                  </li>
+                  <li class="mini-cart">
+                    <a href=""><span class="topbar-icon"><i class="fa fa-shopping-basket"
+                          aria-hidden="true"></i></span>Cart <span class="count">()</span></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </header>
 
-    {{ block "content" . }}
-    {{ end }}
+    </div>
+  </header>
 
-    <footer>
-      {{ partial "footer.html" . }}
-    </footer>
-    <a class="back-to-top" href="#"></a>
-    <script src="/js/jquery-1.12.4.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/owl.thumbs.min.js"></script>
-    <script src="/js/mordernizr-1.0.min.js"></script>
-    <script src="/js/chosen.min.js"></script>
-    <script src="/js/jquery.scrollbar.min.js"></script>
-    <script src="/js/frontend.js"></script>
-  </body>
+  {{ block "content" . }}
+  {{ end }}
+
+  <footer>
+    {{ partial "footer.html" . }}
+  </footer>
+  <a class="back-to-top" href="#"></a>
+  <script src="/js/jquery-1.12.4.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/owl.thumbs.min.js"></script>
+  <script src="/js/mordernizr-1.0.min.js"></script>
+  <script src="/js/chosen.min.js"></script>
+  <script src="/js/jquery.scrollbar.min.js"></script>
+  <script src="/js/frontend.js"></script>
+</body>
+
 </html>
