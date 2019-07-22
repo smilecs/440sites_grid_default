@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
             <div class="product-details-view">
-              <div class="box-product-view">
+              <div class="box-product-view" style="text-align:center">
                 {{ if not (eq .Params.images nil) }}
                 <img
                   src={{ partial "imgsrc.html" (dict "src" (index .Params.images 0).url  "width" 400 "height" 500) }}
@@ -27,9 +27,9 @@
                 >
                   {{ range.Params.images }}
                   <div class="details-item">
-                    <div class="main-img">
+                    <div class="main-img" >
                       <img
-                        src={{ partial "imgsrc.html" (dict "src" .url "width" 200 "height" 250) }}
+                        src={{ partial "imgsrc.html" (dict "src" .url "width" 400 "height" 500) }}
                         alt="product image"
                       />
                     </div>
