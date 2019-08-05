@@ -16,31 +16,36 @@
 </div>
 
 <section id="the_body"></section>
-<div class="fixed bottom-0" style="z-index:1000">
-  <button onclick="add()">add</button>
-</div>
 
 <script
-  src="//merchants.shop440.com/sdk.js"
+ src="//merchants.shop440.com/sdk.js" 
   type="text/javascript"
   charset="utf-8"
 ></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
-  new window.shop440site({
+  window.s440 = new window.shop440site({
     el: document.getElementById("the_body"),
-    apiRoot: "http://localhost:8080"
+    <!-- apiRoot: "http://localhost:8080" -->
   });
 
-  function add() {
-    console.log("Add");
+  function addProduct(shopID, slug, q) {
+    let quantity = parseInt(document.getElementById("cart-item-quantity").value, 10)
+    if (!quantity){
+      quantity = 1
+    }
     var event = new CustomEvent("s440-add-to-cart", {
       detail: {
-        slug: "ducimus-asperiores-lorem-dpiev",
-        shopId: "demo",
-        quantity: 2
+        slug: slug,
+        shopId: shopID,
+        quantity: quantity
       }
     });
-    console.log(window.dispatchEvent(event));
+    window.dispatchEvent(event);
+    // };
+  }
+
+  function showCartOverlay(e) {
+    window.dispatchEvent(new CustomEvent("s440-showOverlay"));
   }
 </script>

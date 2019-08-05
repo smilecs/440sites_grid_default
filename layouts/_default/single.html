@@ -59,13 +59,12 @@
                 <div class="box-quantity">
                   <span class="text">QTY</span>
                   <span class="quantity">
-                    <input type="text" placeholder="1" class="number" /><a
-                      href="#"
+                    <input type="text" placeholder="1" class="number"  id="cart-item-quantity"/><a
                       ><i class="fa fa-angle-down" aria-hidden="true"></i
                     ></a>
                   </span>
                 </div>
-                <a href="#" class="add-to-bag">Add to CART</a>
+                <a class="add-to-bag pointer" onclick="addProduct({{.Params.shop_id}}, {{.Params.slug}}, 1)">Add to CART</a>
               </div>
             </div>
           </div>
