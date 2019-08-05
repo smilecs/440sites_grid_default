@@ -1,20 +1,18 @@
 <div class="footer layout1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
-                <div class="left-content">
-                    <div class="coppy-right">
-                        <p class="content">© Powered by <span> Shop440 </span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
-                <div class="right-content">
-                  
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
+        <div class="left-content">
+          <div class="coppy-right">
+            <p class="content">© Powered by <span> Shop440 </span></p>
+          </div>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+        <div class="right-content"></div>
+      </div>
     </div>
+  </div>
 </div>
 
 <section id="the_body"></section>
@@ -22,16 +20,27 @@
   <button onclick="add()">add</button>
 </div>
 
-<script src="//localhost:8000/dist/sdk.js" type="text/javascript" charset="utf-8" ></script>
-   <script>
+<script
+  src="//merchants.shop440.com/sdk.js"
+  type="text/javascript"
+  charset="utf-8"
+></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
   new window.shop440site({
-    el:document.getElementById("the_body"),
+    el: document.getElementById("the_body"),
     apiRoot: "http://localhost:8080"
-  }) 
+  });
 
-  function add(){
-    console.log("Add")
-    var event = new CustomEvent('s440-add-to-cart', {detail:{ slug: "january-ss-sunglasses-jhn0m/", shopId:"demo", quantity:2 }});
-    console.log(window.dispatchEvent(event))
+  function add() {
+    console.log("Add");
+    var event = new CustomEvent("s440-add-to-cart", {
+      detail: {
+        slug: "ducimus-asperiores-lorem-dpiev",
+        shopId: "demo",
+        quantity: 2
+      }
+    });
+    console.log(window.dispatchEvent(event));
   }
- </script>
+</script>
