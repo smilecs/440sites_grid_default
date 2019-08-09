@@ -1,4 +1,5 @@
 /*--------------------------/*
+ * 
 Tempale name : Quinto
 Version    : 1.0.0
 Author     : kutethemes
@@ -4911,8 +4912,8 @@ AUTO CLEAR
   text-align: center;
 }
 .grid .product-item {
-  width: 100%;
-  text-align: center;
+  /* width: 100%; */
+  /* text-align: center; */
 }
 .list-page li {
   margin: 0 3px;

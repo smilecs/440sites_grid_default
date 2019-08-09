@@ -1,0 +1,5 @@
+{{ $imgB64 := .src | base64Encode }}
+{{ $imgB64 = replace $imgB64 "/" "_" }}
+{{ $imgB64 = replace $imgB64 "+" "-" }}
+{{ $imgB64 = replace $imgB64 "=" "" }}
+{{ return (print "https://imgproxy-vc5s5p7q2q-ew.a.run.app/unsafe/fill/" .width "/" .height "/sm/1/" $imgB64) }}

@@ -1,18 +1,51 @@
 <div class="footer layout1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
-                <div class="left-content">
-                    <div class="coppy-right">
-                        <p class="content">© Powered by <span> Shop440 </span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
-                <div class="right-content">
-                  
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
+        <div class="left-content">
+          <div class="coppy-right">
+            <p class="content">© Powered by <span> Shop440 </span></p>
+          </div>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+        <div class="right-content"></div>
+      </div>
     </div>
+  </div>
 </div>
+
+<section id="the_body"></section>
+
+<script
+ src="//merchants.shop440.com/sdk.js" 
+  type="text/javascript"
+  charset="utf-8"
+></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  window.s440 = new window.shop440site({
+    el: document.getElementById("the_body"),
+    <!-- apiRoot: "http://localhost:8080" -->
+  });
+
+  function addProduct(shopID, slug, q) {
+    let quantity = parseInt(document.getElementById("cart-item-quantity").value, 10)
+    if (!quantity){
+      quantity = 1
+    }
+    var event = new CustomEvent("s440-add-to-cart", {
+      detail: {
+        slug: slug,
+        shopId: shopID,
+        quantity: quantity
+      }
+    });
+    window.dispatchEvent(event);
+    // };
+  }
+
+  function showCartOverlay(e) {
+    window.dispatchEvent(new CustomEvent("s440-showOverlay"));
+  }
+</script>

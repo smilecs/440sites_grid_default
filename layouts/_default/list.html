@@ -1,82 +1,123 @@
 {{ define "content" }}
+<style>
+@media (max-width: 479px){
+  .grid .product-item {
+    width: 50%;
+  }
+.max-2-lines {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
+}
+}
+
+@media (max-width: 639px){
+  .nav-tab-style1 .list-nav li {
+      display: inline-block !important; 
+      margin: 0; 
+      padding: 5px;
+  }
+
+  .product-info{
+    height:7.5em;
+  }
+}
+</style>
 <div class="main-content home4">
-    <div class="product-content">
-        <div class="container">
-            <div class="kt-tab-fadeeffect nav-tab-style1">
-                <ul class="nav list-nav">
-                    <li class="active"><a data-animated="slideInRight" data-toggle="pill" href="#all">All</a></li>
-                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    <li class=""><a data-animated="slideInRight" data-toggle="pill" href="#{{$name}}">{{ $name | title }}</a></li>
-                    {{ end }}
-                </ul>
-                <div class="tab-content">
-                    <div id="all" class="tab-panel active">
-                        <div class="qt-products grid row-has-3items">
-                            <div class="row auto-clear">
-                                {{ range .Data.Pages }}
-                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
-                                    <div class="product-inner">
-                                        <div class="product-thumb">
-                                            <a class="thumb-link" href="{{ .RelPermalink }}">
-                                                {{ if not (eq  .Params.images nil)  }}
-                                                <img src="https://imgproxy-vc5s5p7q2q-ew.a.run.app/insecure/fill/300/500/sm/1/plain/{{ (index .Params.images 0).url }}"
-                                                    alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
-                                                {{ end }}
-                                            </a>
-                                            <div class="group-button">
-                                                <a class="add-to-wishlist" href="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <a class="product-name"
-                                                    href="{{ .RelPermalink }}">{{ .Params.title | title}} </a>
-                                                <div class="price">
-                                                    {{ .Params.price }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{ end }}
-                            </div>
+  <div class="product-content">
+    <div class="container">
+      <div class="kt-tab-fadeeffect nav-tab-style1">
+        <ul class="nav list-nav">
+          <li class="active">
+            <a data-animated="slideInRight" data-toggle="pill" href="#all"
+              >All</a
+            >
+          </li>
+          {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+          <li class="">
+            <a data-animated="slideInRight" data-toggle="pill" href="#{{$name}}"
+              >{{$name}}</a
+            >
+          </li>
+          {{ end }}
+        </ul>
+        <div class="tab-content">
+          <div id="all" class="tab-panel active">
+            <div class="qt-products grid row-has-3items">
+              <div class="row auto-clear">
+                {{ range .Data.Pages }}
+                <div
+                  class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product-item layout4"
+                >
+                  <div class="product-inner">
+                    <div class="product-thumb">
+                      <a class="thumb-link" href="{{ .RelPermalink }}">
+                        {{ if not (eq .Params.images nil) }}
+                        <img 
+                          src={{ partial "imgsrc.html" (dict "src" (index .Params.images 0).url "width" 200 "height" 250) }} />
+                        {{ end }}
+                      </a>
+                      <div class="group-button">
+                        <a class="add-to-wishlist" href="#"></a>
+                      </div>
+                      <div class="product-info">
+                        <a class="product-name max-2-lines " href="{{ .RelPermalink }}"
+                          >{{ .Params.title | title}}
+                        </a>
+                        <div class="price">
+                          {{ .Params.price }}
                         </div>
+                      </div>
                     </div>
-
-                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    <div id="{{$name}}" class="tab-panel">
-                        <div class="qt-products grid row-has-3items">
-                            <div class="row auto-clear">
-                                {{ range $key, $value := $taxonomy }}
-                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout1">
-                                    <div class="product-inner">
-                                        <div class="product-thumb">
-                                            <a class="thumb-link" href="{{ .RelPermalink }}">
-                                                {{ if not (eq  .Params.images nil)  }}
-                                                <img src="https://imgproxy-vc5s5p7q2q-ew.a.run.app/insecure/fill/300/500/sm/1/plain/{{ (index .Params.images 0).url }}"
-                                                    alt="Image not found" onerror="this.onerror=null;this.src='images/product4.jpg';" />
-                                                {{ end }}
-                                            </a>
-                                            <div class="group-button">
-                                                <a class="add-to-wishlist" href="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <a class="product-name"
-                                                    href="{{ .RelPermalink }}">{{ .Params.title | title}} </a>
-                                                <div class="price">
-                                                    {{ .Params.price }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{ end }}
-
-                            </div>
-                        </div>
-                    </div>
-                    {{ end }}
+                  </div>
                 </div>
+                {{ end }}
+              </div>
             </div>
+          </div>
+
+          {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+          <div id="{{$name}}" class="tab-panel">
+            <div class="qt-products grid row-has-3items">
+              <div class="row auto-clear">
+                {{ range $key, $value := $taxonomy }}
+                <div
+                  class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item layout4"
+                >
+                  <div class="product-inner">
+                    <div class="product-thumb">
+                      <a class="thumb-link" href="{{ .RelPermalink }}">
+                        {{ if not (eq .Params.images nil) }}
+                        <img
+                         src={{ partial "imgsrc.html" (dict "src" (index .Params.images 0).url "width" 200 "height" 250) }} />
+                        />
+                        {{ end }}
+                      </a>
+                      <div class="group-button">
+                        <a class="add-to-wishlist" href="#"></a>
+                      </div>
+                      <div class="product-info">
+                        <a class="product-name max-2-lines " href="{{ .RelPermalink }}"
+                          >{{ .Params.title | title}}
+                        </a>
+                        <div class="price">
+                          {{ .Params.price }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
         </div>
+      </div>
     </div>
+  </div>
 </div>
 {{ end }}
