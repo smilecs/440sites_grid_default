@@ -6,7 +6,7 @@
                 <ul class="nav list-nav">
                     <li class="active"><a data-animated="slideInRight" data-toggle="pill" href="#all">All</a></li>
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    <li class=""><a data-animated="slideInRight" data-toggle="pill" href="#{{$name}}">{{$name}}</a></li>
+                    <li class=""><a data-animated="slideInRight" data-toggle="pill" href="#{{$name}}">{{ $name | title }}</a></li>
                     {{ end }}
                 </ul>
                 <div class="tab-content">
