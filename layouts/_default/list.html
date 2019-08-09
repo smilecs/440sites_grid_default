@@ -39,7 +39,7 @@
           {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
           <li class="">
             <a data-animated="slideInRight" data-toggle="pill" href="#{{$name}}"
-              >{{$name}}</a
+              >{{ $name | title }}</a
             >
           </li>
           {{ end }}

@@ -48,14 +48,10 @@
                 <div class="price">
                   {{ .Params.price }}
                 </div>
-<<<<<<< HEAD
-                <div class="author">By: <span class="name"> {{ .Params.who_made_it | title }}</span></div>
-=======
                 <div class="author">
                   By:
-                  <span class="name"> {{ .Params.who_made_it | title}}</span>
+                  <span class="name"> {{ .Params.shop.title | title}}</span>
                 </div>
->>>>>>> 335550da41179d0538be6e26441e28011e0bbfb6
                 <div class="description">
                   {{ .Params.description }}
                 </div>
