@@ -46,7 +46,7 @@
                   >{{ .Params.title | title }}
                 </a>
                 <div class="price">
-                  {{ .Params.price }}
+                  {{ htmlUnescape "&#8358;" }}{{ int .Params.price | lang.NumFmt 2 }}
                 </div>
                 <div class="author">
                   By:
