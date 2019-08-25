@@ -6,9 +6,12 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
             <div class="product-details-view">
-              <div class="box-product-view">
-                {{ if not (eq  .Params.images nil)  }}
-                <img src="{{ (index .Params.images 0).url }}" alt="" />
+              <div class="box-product-view" style="text-align:center">
+                {{ if not (eq .Params.images nil) }}
+                <img
+                  src={{ partial "imgsrc.html" (dict "src" (index .Params.images 0).url  "width" 400 "height" 500) }}
+                  alt="product image"
+                />
                 {{ end }}
               </div>
               <div class="product-details-nav">
@@ -24,8 +27,11 @@
                 >
                   {{ range.Params.images }}
                   <div class="details-item">
-                    <div class="main-img">
-                      <img src="{{ .url }}" alt="" />
+                    <div class="main-img" >
+                      <img
+                        src={{ partial "imgsrc.html" (dict "src" .url "width" 400 "height" 500) }}
+                        alt="product image"
+                      />
                     </div>
                   </div>
                   {{ end }}
@@ -36,11 +42,16 @@
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
             <div class="details-info">
               <div class="product-info">
-                <a class="product-name" href="#">{{ .Params.title | title }} </a>
+                <a class="product-name" href="#"
+                  >{{ .Params.title | title }}
+                </a>
                 <div class="price">
                   {{ .Params.price }}
                 </div>
-                <div class="author">By: <span class="name"> {{ .Params.who_made_it | title}}</span></div>
+                <div class="author">
+                  By:
+                  <span class="name"> {{ .Params.who_made_it | title}}</span>
+                </div>
                 <div class="description">
                   {{ .Params.description }}
                 </div>
